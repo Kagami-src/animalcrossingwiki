@@ -1,6 +1,6 @@
 package com.kagami.animalcrossingwiki.di
 
-import com.kagami.animalcrossingwiki.FishListFragment
+import com.kagami.animalcrossingwiki.ui.fish.FishListFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

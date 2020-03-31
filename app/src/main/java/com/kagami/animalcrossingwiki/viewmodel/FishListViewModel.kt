@@ -19,7 +19,7 @@ class FishListViewModel @Inject constructor(private val fishDao: FishDao):ViewMo
     init {
         viewModelScope.launch {
             fishList.addAll(findAll())
-            _fishListLiveData.value=fishList
+            _fishListLiveData.postValue(fishList)
         }
 
     }

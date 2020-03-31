@@ -1,4 +1,4 @@
-package com.kagami.animalcrossingwiki
+package com.kagami.animalcrossingwiki.ui.fish
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,10 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelLazy
 import androidx.lifecycle.ViewModelProvider
+import com.kagami.animalcrossingwiki.R
 import com.kagami.animalcrossingwiki.di.Injectable
 import com.kagami.animalcrossingwiki.viewmodel.FishListViewModel
+import kotlinx.android.synthetic.main.fragment_fish_list.*
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -32,13 +33,14 @@ class FishListFragment : Fragment(), Injectable {
         return inflater.inflate(R.layout.fragment_fish_list, container, false)
     }
 
+    lateinit var adapter:FishListAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        adapter= FishListAdapter()
         fishListViewModel.fishListLiveData.observe(this, Observer {
-            it.forEach {
-                Timber.e("kagamilog:${it.imagePath}")
-            }
+            adapter.updateList(it)
         })
+        recyclerview.adapter=adapter
     }
 
 }

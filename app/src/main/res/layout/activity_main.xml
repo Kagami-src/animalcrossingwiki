@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/fishlist"
-        android:name="com.kagami.animalcrossingwiki.FishListFragment"
+        android:name="com.kagami.animalcrossingwiki.ui.fish.FishListFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

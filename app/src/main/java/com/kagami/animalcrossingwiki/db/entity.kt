@@ -15,4 +15,5 @@ class FishItem{
     var interval=""
     var price=0
     var imagePath=""
+    var imageData=""
 }

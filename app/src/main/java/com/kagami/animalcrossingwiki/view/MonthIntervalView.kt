@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.view_monthinterval.view.*
 import kotlinx.android.synthetic.main.view_monthintervalitem.view.*
 import timber.log.Timber
 
+//性能较差 待优化
 class MonthIntervalView : FrameLayout {
     constructor(ctx: Context) : super(ctx)
     constructor(ctx: Context, attrs: AttributeSet) : super(ctx, attrs)
@@ -24,7 +25,6 @@ class MonthIntervalView : FrameLayout {
     }
 
     fun setMonths(north:String,south:String){
-        Timber.d("kagamilog $north  $south")
         val northMonths = north.split(" ")
             .map { it.toIntOrNull() ?: 0 }
         val southMonths = south.split(" ")

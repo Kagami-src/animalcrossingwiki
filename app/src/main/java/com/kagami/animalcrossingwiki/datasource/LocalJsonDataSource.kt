@@ -1,7 +1,7 @@
 package com.kagami.animalcrossingwiki.datasource
 
 import com.google.gson.GsonBuilder
-import com.google.gson.reflect.TypeToken
+import com.kagami.animalcrossingwiki.datasource.model.FishDTO
 import org.apache.commons.io.IOUtils
 import java.io.InputStream
 

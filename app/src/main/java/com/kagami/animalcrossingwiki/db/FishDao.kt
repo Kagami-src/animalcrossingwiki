@@ -1,10 +1,9 @@
 package com.kagami.animalcrossingwiki.db
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.kagami.animalcrossingwiki.datasource.FishDTO
+import com.kagami.animalcrossingwiki.datasource.model.FishDTO
 
 @Dao
 abstract class FishDao{

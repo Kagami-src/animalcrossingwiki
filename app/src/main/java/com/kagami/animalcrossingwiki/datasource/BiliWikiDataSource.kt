@@ -1,6 +1,7 @@
 package com.kagami.animalcrossingwiki.datasource
 
 import android.util.Base64
+import com.kagami.animalcrossingwiki.datasource.model.FishDTO
 import org.apache.commons.io.IOUtils
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Element
@@ -17,7 +18,7 @@ class BiliWikiDataSource():WikiDataSource {
         return result
     }
 
-    private fun parseRow(tr: Element):FishDTO{
+    private fun parseRow(tr: Element): FishDTO {
         val tds=tr.select("td")
         val imageurl=tds[0].select("img[src]").attr("src")
         val bs=IOUtils.toByteArray(URL(imageurl))
@@ -30,7 +31,7 @@ class BiliWikiDataSource():WikiDataSource {
             month2 = numberCustomFormat(tds[4].text()),
             interval = numberCustomFormat(tds[5].text()),
             price = tds[6].text().toIntOrNull() ?: 0,
-            imageData = Base64.encodeToString(bs,Base64.DEFAULT)
+            imageData = Base64.encodeToString(bs, Base64.DEFAULT)
         )
     }
 

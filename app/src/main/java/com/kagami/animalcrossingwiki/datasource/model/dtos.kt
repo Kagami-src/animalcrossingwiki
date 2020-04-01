@@ -1,4 +1,4 @@
-package com.kagami.animalcrossingwiki.datasource
+package com.kagami.animalcrossingwiki.datasource.model
 
 data class FishDTO(
     val name:String,

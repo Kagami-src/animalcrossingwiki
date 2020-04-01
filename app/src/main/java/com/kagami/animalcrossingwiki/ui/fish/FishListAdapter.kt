@@ -8,11 +8,13 @@ import com.kagami.animalcrossingwiki.R
 import com.kagami.animalcrossingwiki.db.FishItem
 import com.kagami.animalcrossingwiki.global.loadBase64Image
 import kotlinx.android.synthetic.main.item_fish.view.*
+import timber.log.Timber
 
 class FishListAdapter : RecyclerView.Adapter<FishListAdapter.ViewHolder>() {
 
     private val fislList= mutableListOf<FishItem>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        Timber.d("kagamilog onCreateViewHolder")
         return ViewHolder(LayoutInflater.from(parent.context)
             .inflate(R.layout.item_fish, parent, false)
         )
@@ -30,8 +32,11 @@ class FishListAdapter : RecyclerView.Adapter<FishListAdapter.ViewHolder>() {
         val data=fislList[position]
         holder.itemView.let {
             it.nameText.text=data.name
+            it.placeText.text=data.place
+            it.priceText.text=data.price.toString()
+            it.sizeText.text=data.size
             it.imageView.loadBase64Image(data.imageData)
-            it.monthIntervalView.setMonths(data.month1,data.month2)
+            //it.monthIntervalView.setMonths(data.month1,data.month2)
         }
     }
 

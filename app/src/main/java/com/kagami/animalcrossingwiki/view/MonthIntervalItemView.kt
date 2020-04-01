@@ -3,6 +3,7 @@ package com.kagami.animalcrossingwiki.view
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.FrameLayout
 import com.kagami.animalcrossingwiki.R
 import kotlinx.android.synthetic.main.view_monthintervalitem.view.*
@@ -15,14 +16,14 @@ class MonthIntervalItemView: FrameLayout {
     }
 
     fun setNorthBG(){
-        northView.setBackgroundResource(R.drawable.shape_month1bg)
+        northView.visibility=View.VISIBLE
     }
     fun setSouthBG(){
-        southView.setBackgroundResource(R.drawable.shape_month2bg)
+        southView.visibility=View.VISIBLE
     }
     fun clearBG(){
-        northView.background=null
-        southView.background=null
+        northView.visibility= View.INVISIBLE
+        southView.visibility= View.INVISIBLE
     }
 
 }

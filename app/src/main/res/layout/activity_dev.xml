@@ -6,4 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".DevActivity">
 
+    <com.kagami.animalcrossingwiki.view.ClockView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

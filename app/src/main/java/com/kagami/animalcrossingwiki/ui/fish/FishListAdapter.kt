@@ -36,7 +36,7 @@ class FishListAdapter : RecyclerView.Adapter<FishListAdapter.ViewHolder>() {
             it.priceText.text=data.price.toString()
             it.sizeText.text=data.size
             it.imageView.loadBase64Image(data.imageData)
-            //it.monthIntervalView.setMonths(data.month1,data.month2)
+            it.monthIntervalView.setMonths(data.month1,data.month2)
         }
     }
 

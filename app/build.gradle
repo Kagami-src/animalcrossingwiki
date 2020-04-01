@@ -96,4 +96,9 @@ dependencies {
     implementation "commons-io:commons-io:2.6"
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     kapt 'com.github.bumptech.glide:compiler:4.9.0'
+
+    versions.splitties_version = "2.1.1"
+    implementation "com.louiscad.splitties:splitties-dimensions:$versions.splitties_version"
+    implementation "com.louiscad.splitties:splitties-activities:$versions.splitties_version"
+
 }

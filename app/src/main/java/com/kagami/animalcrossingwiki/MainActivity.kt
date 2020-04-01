@@ -1,5 +1,6 @@
 package com.kagami.animalcrossingwiki
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -39,8 +40,11 @@ class MainActivity : AppCompatActivity() , HasSupportFragmentInjector {
 //        }
         MainScope().launch {
             importData()
+            //savejson()
         }
 
+        //FIXME
+        startActivity(Intent(this,DevActivity::class.java))
     }
 
     suspend fun importData() = withContext(Dispatchers.IO){

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mark_owned"
+        android:title="@string/mark_owned"/>
+
+    <item
+        android:id="@+id/mark_donated"
+        android:title="@string/mark_donated"/>
+
+</menu>

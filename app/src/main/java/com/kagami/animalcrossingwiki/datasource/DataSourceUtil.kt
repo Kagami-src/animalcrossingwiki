@@ -7,4 +7,8 @@ object DataSourceUtil {
         val gson=GsonBuilder().create()
         return gson.toJson(source.fetchFishData())
     }
+    suspend fun toInsectJsonFromSource(source: WikiDataSource):String{
+        val gson=GsonBuilder().create()
+        return gson.toJson(source.fetchInsectData())
+    }
 }

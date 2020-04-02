@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import com.kagami.animalcrossingwiki.R
+import com.kagami.animalcrossingwiki.global.splitAsIntList
 import kotlinx.android.synthetic.main.item_fish.view.*
 import kotlinx.android.synthetic.main.view_monthinterval.view.*
 import kotlinx.android.synthetic.main.view_monthintervalitem.view.*
@@ -25,10 +26,8 @@ class MonthIntervalView : FrameLayout {
     }
 
     fun setMonths(north:String,south:String){
-        val northMonths = north.split(" ")
-            .map { it.toIntOrNull() ?: 0 }
-        val southMonths = south.split(" ")
-            .map { it.toIntOrNull() ?: 0 }
+        val northMonths = north.splitAsIntList()
+        val southMonths = south.splitAsIntList()
         monthItems.forEach { it.clearBG() }
         monthItems.forEachIndexed { index, monthIntervalItemView ->
             if(northMonths.contains(index+1))

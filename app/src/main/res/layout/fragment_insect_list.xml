@@ -9,13 +9,8 @@
         android:id="@+id/recyclerview"
         tools:itemCount="20"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_fish"
+        tools:listitem="@layout/item_insect"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/filterButton"
-        app:srcCompat="@drawable/baseline_filter_list_white_24"
-        android:layout_gravity="bottom|right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+
 </FrameLayout>

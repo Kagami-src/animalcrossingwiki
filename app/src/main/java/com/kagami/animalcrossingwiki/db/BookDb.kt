@@ -5,10 +5,12 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [
-    FishItem::class],
+    FishItem::class,
+    InsectItem::class],
     version = 1,
     exportSchema = false
 )
 abstract class BookDb:RoomDatabase(){
     abstract fun fishDao():FishDao
+    abstract fun insectDao():InsectDao
 }

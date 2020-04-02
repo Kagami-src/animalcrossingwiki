@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.kagami.animalcrossingwiki.db.BookDb
 import com.kagami.animalcrossingwiki.db.FishDao
+import com.kagami.animalcrossingwiki.db.InsectDao
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -21,7 +22,12 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideUserDao(db: BookDb): FishDao {
+    fun provideFishDao(db: BookDb): FishDao {
         return db.fishDao()
+    }
+    @Singleton
+    @Provides
+    fun provideInsectDao(db: BookDb): InsectDao {
+        return db.insectDao()
     }
 }

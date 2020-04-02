@@ -4,27 +4,27 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.kagami.animalcrossingwiki.datasource.model.FishDTO
+import com.kagami.animalcrossingwiki.datasource.model.InsectDTO
 
 @Dao
-abstract class FishDao{
+abstract class InsectDao{
     @Insert
-    abstract fun insert(item:FishItem)
+    abstract fun insert(item:InsectItem)
     @Update
-    abstract fun update(item:FishItem)
+    abstract fun update(item:InsectItem)
     @Insert
-    abstract fun insertAll(items:List<FishItem>)
-    @Query("select * from fishitem order by price desc")
-    abstract fun findAll():List<FishItem>
-    @Query("select COUNT(*) from fishitem")
+    abstract fun insertAll(items:List<InsectItem>)
+    @Query("select * from insectitem order by price desc")
+    abstract fun findAll():List<InsectItem>
+    @Query("select COUNT(*) from insectitem")
     abstract fun count():Int
 
-    fun insertAllTDO(tdos:List<FishDTO>){
+    fun insertAllTDO(tdos:List<InsectDTO>){
         tdos.map {
-            FishItem().apply {
+            InsectItem().apply {
                 name=it.name
                 place=it.place
-                size=it.size
+                weather=it.weather
                 month1=it.month1
                 month2=it.month2
                 interval=it.interval

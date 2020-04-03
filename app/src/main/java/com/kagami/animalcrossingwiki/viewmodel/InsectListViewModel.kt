@@ -33,9 +33,7 @@ class InsectListViewModel @Inject constructor(private val insectDao: InsectDao):
     }
 
     fun update(item:InsectItem){
-        viewModelScope.async {
-            insectDao.update(item)
-        }
+        insectDao.update(item)
     }
 
     fun filter(filter: Filter){

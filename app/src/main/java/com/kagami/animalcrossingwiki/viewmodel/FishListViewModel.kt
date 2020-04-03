@@ -34,9 +34,7 @@ class FishListViewModel @Inject constructor(private val fishDao: FishDao):ViewMo
     }
 
     fun update(item:FishItem){
-        viewModelScope.async {
-            fishDao.update(item)
-        }
+        fishDao.update(item)
     }
 
     fun filter(filter:Filter){

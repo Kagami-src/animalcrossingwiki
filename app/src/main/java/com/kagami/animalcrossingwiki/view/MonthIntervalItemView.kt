@@ -19,9 +19,11 @@ class MonthIntervalItemView: View {
     constructor(ctx: Context, attrs: AttributeSet) : super(ctx, attrs)
     private var text:String = ""
     private val textPaint=TextPaint(Paint.ANTI_ALIAS_FLAG)
-    private val paint=Paint(Paint.ANTI_ALIAS_FLAG)
+    //private val paint=Paint(Paint.ANTI_ALIAS_FLAG)
+    var isCurrent=false
     private val northBG:Drawable
     private val viewBG:Drawable
+    private val currentMonthBG:Drawable
     private val southBG:Drawable
     private var drawNorthBG=false
     private var drawSouthBG=false
@@ -31,6 +33,7 @@ class MonthIntervalItemView: View {
         northBG = resources.getDrawable(R.drawable.shape_month1bg,null)
         southBG = resources.getDrawable(R.drawable.shape_month2bg,null)
         viewBG = resources.getDrawable(R.drawable.shape_monthbg,null)
+        currentMonthBG = resources.getDrawable(R.drawable.shape_currentmonth,null)
         //LayoutInflater.from(context).inflate(R.layout.view_monthintervalitem, this, true)
     }
 
@@ -57,6 +60,7 @@ class MonthIntervalItemView: View {
         val padding=dp(2).toInt()
         val space=dp(1).toInt()
         viewBG.bounds = Rect(padding,padding,w-padding,h-padding)
+        currentMonthBG.bounds = Rect(padding,padding,w-padding,h-padding)
         northBG.bounds = Rect(padding,padding,w-padding,h/2-space)
         southBG.bounds = Rect(padding,h/2+space,w-padding,h-padding)
     }
@@ -68,7 +72,8 @@ class MonthIntervalItemView: View {
             northBG.draw(canvas)
         if(drawSouthBG)
             southBG.draw(canvas)
-
+        if(isCurrent)
+            currentMonthBG.draw(canvas)
         val textYOffset=(textPaint.descent() + textPaint.ascent()) / 2
         canvas.drawText(text,width/2f,height/2f-textYOffset,textPaint)
     }

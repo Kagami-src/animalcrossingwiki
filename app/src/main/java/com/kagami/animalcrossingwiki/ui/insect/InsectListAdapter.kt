@@ -15,6 +15,7 @@ class InsectListAdapter(val viewModel:InsectListViewModel) : RecyclerView.Adapte
 
     private val insertList= mutableListOf<InsectItem>()
     private var currentMinuOfDay:Int=0
+    private var currentMonth=0
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -34,6 +35,7 @@ class InsectListAdapter(val viewModel:InsectListViewModel) : RecyclerView.Adapte
     }
     fun setCurrentTime(minuOfDay:Int,month:Int){
         currentMinuOfDay=minuOfDay
+        currentMonth=month
     }
 
     override fun getItemCount(): Int = insertList.size
@@ -48,6 +50,7 @@ class InsectListAdapter(val viewModel:InsectListViewModel) : RecyclerView.Adapte
             it.sizeText.text=data.weather
             it.imageView.loadBase64Image(data.imageData)
             it.monthIntervalView.setMonths(data.month1,data.month2)
+            it.monthIntervalView.setCurrentMonth(currentMonth)
             it.clockView.setTimeInterval(data.interval,currentMinuOfDay)
             it.ownedTag.visibility = if(data.owned) View.VISIBLE else View.INVISIBLE
             it.donatedTag.visibility = if(data.donated) View.VISIBLE else View.INVISIBLE

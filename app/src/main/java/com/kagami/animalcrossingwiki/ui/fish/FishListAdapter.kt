@@ -14,7 +14,8 @@ import kotlinx.android.synthetic.main.item_fish.view.*
 class FishListAdapter (val viewModel:FishListViewModel): RecyclerView.Adapter<FishListAdapter.ViewHolder>() {
 
     private val fislList= mutableListOf<FishItem>()
-    private var currentMinuOfDay:Int=0
+    private var currentMinuOfDay=0
+    private var currentMonth=0
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -34,6 +35,7 @@ class FishListAdapter (val viewModel:FishListViewModel): RecyclerView.Adapter<Fi
     }
     fun setCurrentTime(minuOfDay:Int,month:Int){
         currentMinuOfDay=minuOfDay
+        currentMonth=month
     }
 
     override fun getItemCount(): Int = fislList.size
@@ -48,6 +50,7 @@ class FishListAdapter (val viewModel:FishListViewModel): RecyclerView.Adapter<Fi
             it.sizeText.text=data.size
             it.imageView.loadBase64Image(data.imageData)
             it.monthIntervalView.setMonths(data.month1,data.month2)
+            it.monthIntervalView.setCurrentMonth(currentMonth)
             it.clockView.setTimeInterval(data.interval,currentMinuOfDay)
             it.ownedTag.visibility = if(data.owned) View.VISIBLE else View.INVISIBLE
             it.donatedTag.visibility = if(data.donated) View.VISIBLE else View.INVISIBLE

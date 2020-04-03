@@ -11,8 +11,8 @@ android {
         applicationId "com.kagami.animalcrossingwiki"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.0beta"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

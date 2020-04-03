@@ -21,7 +21,7 @@ class MonthIntervalView : FrameLayout {
         LayoutInflater.from(context).inflate(R.layout.view_monthinterval, this, true)
         monthItems= arrayOf(m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11,m12)
         monthItems.forEachIndexed { index, monthIntervalItemView ->
-            monthIntervalItemView.textView.text="${index+1}"
+            monthIntervalItemView.setText("${index+1}")
         }
     }
 

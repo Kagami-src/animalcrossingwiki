@@ -13,14 +13,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
+                android:checked="true"
+                android:id="@+id/monthAll"
                 android:text="@string/all"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <RadioButton
+                android:id="@+id/monthNorth"
                 android:text="@string/month_north"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <RadioButton
+                android:id="@+id/monthSouth"
                 android:text="@string/month_south"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -30,14 +34,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
+                android:checked="true"
+                android:id="@+id/ownedAll"
                 android:text="@string/all"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <RadioButton
+                android:id="@+id/ownedTure"
                 android:text="@string/owned"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <RadioButton
+                android:id="@+id/ownedFalse"
                 android:text="@string/not_owned"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -47,23 +55,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <RadioButton
+                android:checked="true"
+                android:id="@+id/donatedAll"
                 android:text="@string/all"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <RadioButton
+                android:id="@+id/donatedTrue"
                 android:text="@string/donated"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <RadioButton
+                android:id="@+id/donatedFalse"
                 android:text="@string/not_donated"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </RadioGroup>
         <Button
+
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:layout_gravity="center_horizontal"
-            android:id="@+id/material_button"
+            android:id="@+id/applyButton"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="@string/apply"/>

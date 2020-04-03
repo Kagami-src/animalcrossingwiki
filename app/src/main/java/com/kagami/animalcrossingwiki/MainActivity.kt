@@ -1,11 +1,10 @@
 package com.kagami.animalcrossingwiki
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.kagami.animalcrossingwiki.datasource.BiliWikiDataSource
-import com.kagami.animalcrossingwiki.datasource.DataSourceUtil
 import com.kagami.animalcrossingwiki.datasource.LocalJsonDataSource
 import com.kagami.animalcrossingwiki.db.FishDao
 import com.kagami.animalcrossingwiki.db.InsectDao
@@ -18,9 +17,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.apache.commons.io.FileUtils
-import timber.log.Timber
-import java.io.File
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() , HasSupportFragmentInjector {
@@ -34,30 +30,19 @@ class MainActivity : AppCompatActivity() , HasSupportFragmentInjector {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        tabs.setupWithViewPager(viewPager)
-        viewPager.adapter=FragmentPagerAdapter(
-            supportFragmentManager,
-            arrayOf(getString(R.string.fish),getString(R.string.insect))
-        )
-        //assets.openFd()
-//       MainScope().launch {
-//           loadData()
-//       }
-
-//        MainScope().launch {
-//            savejson()
-//        }
         MainScope().launch {
             importData()
-            //savejson()
+            viewPager.adapter=FragmentPagerAdapter(
+                supportFragmentManager,
+                arrayOf(getString(R.string.fish),getString(R.string.insect))
+            )
+            tabs.setupWithViewPager(viewPager)
+            progressBar.visibility= View.GONE
+            coordinatorLayout.visibility=View.VISIBLE
         }
-
-        //FIXME
-        //startActivity(Intent(this,DevActivity::class.java))
     }
 
     suspend fun importData() = withContext(Dispatchers.IO){
-        Timber.e("kagamilog  size  ${fishDao.count()}")
         if(fishDao.count()==0){
             val ds=LocalJsonDataSource(assets.open("fish.json"),assets.open("insect.json"))
             fishDao.insertAllTDO(ds.fetchFishData())
@@ -65,11 +50,6 @@ class MainActivity : AppCompatActivity() , HasSupportFragmentInjector {
         }
     }
 
-    suspend fun savejson() = withContext(Dispatchers.IO){
-        val ds=BiliWikiDataSource()
-        val json=DataSourceUtil.toInsectJsonFromSource(ds)
-        FileUtils.writeStringToFile(File(getExternalFilesDir(null),"insect.json"),json, Charsets.UTF_8)
-    }
     override fun supportFragmentInjector() = dispatchingAndroidInjector
 
 

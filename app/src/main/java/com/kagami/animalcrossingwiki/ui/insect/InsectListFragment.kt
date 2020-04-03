@@ -7,11 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-
 import com.kagami.animalcrossingwiki.R
 import com.kagami.animalcrossingwiki.di.Injectable
-import com.kagami.animalcrossingwiki.ui.fish.FishListAdapter
-import com.kagami.animalcrossingwiki.viewmodel.FishListViewModel
+import com.kagami.animalcrossingwiki.view.FilterBottomSheetDialog
 import com.kagami.animalcrossingwiki.viewmodel.InsectListViewModel
 import kotlinx.android.synthetic.main.fragment_fish_list.*
 import java.util.*
@@ -37,7 +35,7 @@ class InsectListFragment : Fragment(), Injectable {
     lateinit var adapter: InsectListAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter= InsectListAdapter()
+        adapter= InsectListAdapter(insectListViewModel)
         insectListViewModel.insectListLiveData.observe(this, Observer {
             adapter.updateList(it)
         })
@@ -47,6 +45,17 @@ class InsectListFragment : Fragment(), Injectable {
                 Calendar.MONTH))
         }
 
+        filterButton.setOnClickListener { showBottomSheet() }
+
+    }
+
+    fun showBottomSheet(){
+        val sheet= FilterBottomSheetDialog(context!!)
+        sheet.setupInsectFilter(insectListViewModel.filter)
+        sheet.onInsectFilterApply {
+            insectListViewModel.filter(it)
+        }
+        sheet.show()
     }
 
 }

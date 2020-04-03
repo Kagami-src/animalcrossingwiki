@@ -7,12 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.kagami.animalcrossingwiki.R
 import com.kagami.animalcrossingwiki.di.Injectable
+import com.kagami.animalcrossingwiki.view.FilterBottomSheetDialog
 import com.kagami.animalcrossingwiki.viewmodel.FishListViewModel
 import kotlinx.android.synthetic.main.fragment_fish_list.*
-import timber.log.Timber
 import java.util.*
 import javax.inject.Inject
 
@@ -51,8 +50,11 @@ class FishListFragment : Fragment(), Injectable {
     }
 
     fun showBottomSheet(){
-        val sheet=BottomSheetDialog(context!!)
-        sheet.setContentView(R.layout.bottomsheet_filter)
+        val sheet= FilterBottomSheetDialog(context!!)
+        sheet.setupFishFilter(fishListViewModel.filter)
+        sheet.onFishFilterApply {
+            fishListViewModel.filter(it)
+        }
         sheet.show()
     }
 

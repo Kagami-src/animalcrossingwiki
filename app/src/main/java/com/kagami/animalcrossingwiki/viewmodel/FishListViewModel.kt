@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kagami.animalcrossingwiki.db.FishDao
 import com.kagami.animalcrossingwiki.db.FishItem
+import com.kagami.animalcrossingwiki.global.splitAsIntList
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -39,12 +40,30 @@ class FishListViewModel @Inject constructor(private val fishDao: FishDao):ViewMo
     }
 
     fun filter(filter:Filter){
-        val month= Calendar.getInstance().get(Calendar.MONTH)
-        fishList.filter {
+        this.filter=filter
+        viewModelScope.launch {
+            _fishListLiveData.value=filterList(filter)
+        }
+    }
+    private suspend fun filterList(filter:Filter) = withContext(Dispatchers.Default){
+        val month= Calendar.getInstance().get(Calendar.MONTH) + 1
+        return@withContext fishList.filter { item ->
             var result=true
+            val nmonth=item.month1.splitAsIntList()
+            val smonth=item.month2.splitAsIntList()
             filter.north?.let {
-                
+                result = result && nmonth.contains(month)
             }
+            filter.south?.let {
+                result = result && smonth.contains(month)
+            }
+            filter.owned?.let {
+                result = result && it==item.owned
+            }
+            filter.donated?.let {
+                result = result && it==item.donated
+            }
+            result
         }
     }
     data class Filter(

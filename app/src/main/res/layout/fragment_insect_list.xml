@@ -6,11 +6,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fish.FishListFragment">
     <androidx.recyclerview.widget.RecyclerView
+        android:clipToPadding="false"
+        android:paddingBottom="64dp"
         android:id="@+id/recyclerview"
         tools:itemCount="20"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_insect"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="12dp"
+        android:id="@+id/filterButton"
+        app:srcCompat="@drawable/baseline_filter_list_white_24"
+        app:tint="@android:color/white"
+        android:layout_gravity="bottom|right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </FrameLayout>

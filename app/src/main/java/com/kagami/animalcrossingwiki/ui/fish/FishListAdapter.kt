@@ -10,8 +10,6 @@ import com.kagami.animalcrossingwiki.db.FishItem
 import com.kagami.animalcrossingwiki.global.loadBase64Image
 import com.kagami.animalcrossingwiki.viewmodel.FishListViewModel
 import kotlinx.android.synthetic.main.item_fish.view.*
-import timber.log.Timber
-import java.util.*
 
 class FishListAdapter (val viewModel:FishListViewModel): RecyclerView.Adapter<FishListAdapter.ViewHolder>() {
 
